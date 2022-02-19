@@ -1,7 +1,7 @@
 <idea-plugin url="https://github.com/analytically/innerbuilder">
-    <id>InnerBuilder</id>
-    <name>InnerBuilder</name>
-    <version>1.1.9</version>
+    <id>SmallCodeGen</id>
+    <name>SmallCodeGen</name>
+    <version>1.2.0</version>
 
     <description><![CDATA[${project.description}]]></description>
 
@@ -10,6 +10,7 @@
     <depends>com.intellij.modules.vcs</depends>
 
     <change-notes><![CDATA[
+      19.02.2022 - 1.2.0 - use my code style
       08.12.2021 - 1.1.9 - Remove FindBugs, project is dead.<br/>
       08.12.2021 - 1.1.8 - Bugfixes.<br/>
       24.11.2021 - 1.1.7 - Work with latest Intellij IDEA and target JDK 17.<br/>
@@ -31,7 +32,7 @@
       ]]>
     </change-notes>
 
-    <vendor email="mathias.bogaert@gmail.com" url="https://github.com/analytically">Mathias Bogaert</vendor>
+    <vendor email="anton.mamontov.work@gmail.com" url="https://github.com/tohaheleneto">Anton Mamontov</vendor>
 
     <!-- Intellij 12+ -->
     <idea-version since-build="123" />
@@ -39,7 +40,7 @@
     <actions>
         <action id="InnerBuilder.generate"
                 class="org.jetbrains.plugins.innerbuilder.InnerBuilderAction"
-                text="Builder..." description="${project.description}">
+                text="SmallCodeGen" description="${project.description}">
             <add-to-group group-id="GenerateGroup" anchor="after" relative-to-action="JavaGenerateGroup2"/>
             <keyboard-shortcut keymap="$default" first-keystroke="shift alt B"/>
         </action>
