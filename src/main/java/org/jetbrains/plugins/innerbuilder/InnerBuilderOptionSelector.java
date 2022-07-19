@@ -18,7 +18,7 @@ public final class InnerBuilderOptionSelector {
     private static final List<SelectorOption> OPTIONS = createGeneratorOptions();
 
     private static List<SelectorOption> createGeneratorOptions() {
-        final List<SelectorOption> options = new ArrayList<SelectorOption>(8);
+        final List<SelectorOption> options = new ArrayList<>(10);
 
         options.add(
                 SelectorOption.newBuilder()
@@ -81,15 +81,24 @@ public final class InnerBuilderOptionSelector {
                         .withOption(InnerBuilderOption.WITH_JAVADOC)
                         .build());
 
-	options.add(
-		SelectorOption.newBuilder()
-			.withCaption("Use field names in setter")
-			.withMnemonic('s')
-			.withToolTip(
-				"Generate builder methods that has the same parameter names in setter methods as field names, for example: "
-				+ "builder.withName(String fieldName)")
-			.withOption(InnerBuilderOption.FIELD_NAMES)
-			.build());
+        options.add(
+                SelectorOption.newBuilder()
+                        .withCaption("Use field names in setter")
+                        .withMnemonic('s')
+                        .withToolTip(
+                                "Generate builder methods that has the same parameter names in setter methods as field names, for example: "
+                                        + "builder.withName(String fieldName)")
+                        .withOption(InnerBuilderOption.FIELD_NAMES)
+                        .build());
+
+        options.add(
+                SelectorOption.newBuilder()
+                        .withCaption("Create json constructor")
+                        .withMnemonic('k')
+                        .withToolTip(
+                                "bla bla bla")
+                        .withOption(InnerBuilderOption.JSON_CONSTRUCTOR)
+                        .build());
 
         return options;
     }

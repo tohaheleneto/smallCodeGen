@@ -1,15 +1,21 @@
 plugins {
     id 'java'
-    id 'org.jetbrains.intellij' version '1.4.0'
+    id 'org.jetbrains.intellij' version '1.7.0'
 }
 
 intellij {
-    version.set('213.6777.52')
+    version.set('221.5921.22')
     plugins = ['com.intellij.java']
 }
 repositories {
     mavenCentral()
     mavenLocal()
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/org.assertj/assertj-core
+    testImplementation 'org.assertj:assertj-core:3.23.1'
+
 }
 
 jar {

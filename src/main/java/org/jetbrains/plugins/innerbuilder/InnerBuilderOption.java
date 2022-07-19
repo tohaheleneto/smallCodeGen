@@ -10,7 +10,9 @@ public enum InnerBuilderOption {
     JSR305_ANNOTATIONS("useJSR305Annotations"),
     PMD_AVOID_FIELD_NAME_MATCHING_METHOD_NAME_ANNOTATION("suppressAvoidFieldNameMatchingMethodName"),
     WITH_JAVADOC("withJavadoc"),
-    FIELD_NAMES("fieldNames");
+    FIELD_NAMES("fieldNames"),
+
+    JSON_CONSTRUCTOR("jsonConstructor");
 
     private final String property;
 
