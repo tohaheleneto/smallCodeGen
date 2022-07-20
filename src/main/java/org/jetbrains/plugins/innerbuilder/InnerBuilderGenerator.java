@@ -340,7 +340,8 @@ public class InnerBuilderGenerator implements Runnable {
         PsiMethod oldConstructor = null;
 
         for (PsiMethod psiMethod : oldConstructors) {
-            if (psiMethod.getParameterList().getParameters().length > 1) {
+            final var parametrs = psiMethod.getParameterList().getParameters();
+            if (parametrs.length > 1 || parametrs.length == 1 && !parametrs[0].getName().equals("builder")) {
                 oldConstructor = psiMethod;
                 break;
             }
