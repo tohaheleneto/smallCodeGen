@@ -354,17 +354,13 @@ public class InnerBuilderGenerator implements Runnable {
                 final var anotations = parameter.getAnnotations();
                 if (anotations.length == 1) {
                     final var anotationValue = anotations[0].findAttributeValue("value").getText().replace("\"", "");
-                    oldNamesForParams.put(snakeCaseToCamaleCase(anotationValue), anotationValue);
+                    oldNamesForParams.put(snakeCaseToСamelCase(anotationValue), anotationValue);
                 }
             }
 
             for (PsiFieldMember fieldMember : fields) {
                 String fieldName = fieldMember.getElement().getName();
                 String originalName = oldNamesForParams.getOrDefault(fieldName, fieldName);
-
-                if (fieldName.contains("_")) {
-                    fieldName = snakeCaseToCamaleCase(fieldName);
-                }
 
                 final PsiParameter builderParameter = psiElementFactory.createParameter(fieldName,
                                                                                         fieldMember.getElement().getType());
@@ -413,15 +409,8 @@ public class InnerBuilderGenerator implements Runnable {
 
     private void firstJsonConstructorCreation(List<PsiFieldMember> fields, PsiMethod constructor) {
         for (PsiFieldMember fieldMember : fields) {
-            String fieldName = fieldMember.getElement().getName();
-            String originalName = fieldName;
-            boolean jsonProperty = false;
-
-            if (fieldName.contains("_")) {
-                jsonProperty = true;
-                fieldName = snakeCaseToCamaleCase(fieldName);
-            }
-
+            String originalName = fieldMember.getElement().getName();
+            String fieldName = snakeCaseToСamelCase(originalName);
             final PsiParameter builderParameter = psiElementFactory.createParameter(fieldName,
                                                                                     fieldMember.getElement().getType());
 
@@ -634,8 +623,8 @@ public class InnerBuilderGenerator implements Runnable {
         return new String(chars);
     }
 
-    public static String snakeCaseToCamaleCase(String string) {
-        if (string == null || string.length() == 0) {
+    public static String snakeCaseToСamelCase(String string) {
+        if (string == null || !string.contains("_")) {
             return string;
         }
 
