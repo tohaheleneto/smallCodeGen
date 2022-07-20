@@ -121,7 +121,7 @@ public final class InnerBuilderOptionSelector {
 
         final PsiFieldMember[] memberArray = members.toArray(new PsiFieldMember[members.size()]);
 
-        final MemberChooser<PsiFieldMember> chooser = new MemberChooser<PsiFieldMember>(memberArray,
+        final MemberChooser<PsiFieldMember> chooser = new MemberChooser<>(memberArray,
                 false, // allowEmptySelection
                 true,  // allowMultiSelection
                 project, null, optionCheckBoxes);
@@ -156,12 +156,7 @@ public final class InnerBuilderOptionSelector {
 
         final String optionProperty = option.getProperty();
         optionCheckBox.setSelected(propertiesComponent.isTrueValue(optionProperty));
-        optionCheckBox.addItemListener(new ItemListener() {
-            @Override
-            public void itemStateChanged(final ItemEvent event) {
-                propertiesComponent.setValue(optionProperty, Boolean.toString(optionCheckBox.isSelected()));
-            }
-        });
+        optionCheckBox.addItemListener(event -> propertiesComponent.setValue(optionProperty, Boolean.toString(optionCheckBox.isSelected())));
         return optionCheckBox;
     }
 }

@@ -345,7 +345,7 @@ public class InnerBuilderGenerator implements Runnable {
 
             final PsiParameter builderParameter = psiElementFactory.createParameter(fieldName, fieldMember.getElement().getType());
             if (jsonProperty) {
-                psiElementFactory.createAnnotationFromText(String.format("@JsonProperty(\"%s\")", fieldMember.getElement().getName()), builderParameter);
+                builderParameter.getModifierList().addAnnotation(String.format("com.fasterxml.jackson.annotation.JsonProperty(\"%s\")", fieldMember.getElement().getName()));
             }
             constructor.getParameterList().add(builderParameter);
         }
@@ -369,7 +369,7 @@ public class InnerBuilderGenerator implements Runnable {
 
                 final String assignText;
                 if (setter == null || isFinal) {
-                    assignText = String.format("this.%1$s = builder.%1$s;", fieldName);
+                    assignText = String.format("this.%1$s = %1$s;", fieldName);
                 } else {
                     assignText = String.format("%s(builder.%s);", setter.getName(), fieldName);
                 }

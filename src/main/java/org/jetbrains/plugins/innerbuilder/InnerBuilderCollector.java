@@ -42,7 +42,7 @@ public final class InnerBuilderCollector {
             return null;
         }
 
-        final List<PsiFieldMember> allFields = new ArrayList<PsiFieldMember>();
+        final List<PsiFieldMember> allFields = new ArrayList<>();
 
         PsiClass classToExtractFieldsFrom = clazz;
         while (classToExtractFieldsFrom != null) {
@@ -58,7 +58,7 @@ public final class InnerBuilderCollector {
 
     private static List<PsiFieldMember> collectFieldsInClass(final PsiElement element, final PsiClass accessObjectClass,
             final PsiClass clazz) {
-        final List<PsiFieldMember> classFieldMembers = new ArrayList<PsiFieldMember>();
+        final List<PsiFieldMember> classFieldMembers = new ArrayList<>();
         final PsiResolveHelper helper = JavaPsiFacade.getInstance(clazz.getProject()).getResolveHelper();
 
         for (final PsiField field : clazz.getFields()) {

@@ -55,6 +55,8 @@ public class InnerBuilderHandler implements LanguageCodeInsightActionHandler {
             return;
         }
 
+        //TODO check java files only
+
         psiDocumentManager.commitDocument(currentDocument);
 
         if (!EditorModificationUtil.checkModificationAllowed(editor)) {
