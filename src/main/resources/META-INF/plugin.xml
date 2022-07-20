@@ -1,7 +1,7 @@
 <idea-plugin url="https://github.com/tohaheleneto">
     <id>SmallCodeGen</id>
     <name>SmallCodeGen</name>
-    <version>1.2.0</version>
+    <version>1.2.1</version>
 
     <description>"SmallCodeGen is plugin to generate builders, jooq records, etc"</description>
 
